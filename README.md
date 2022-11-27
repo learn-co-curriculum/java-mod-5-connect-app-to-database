@@ -51,7 +51,7 @@ database. These configurations are added to the `persistence.xml` file.
       <property name="javax.persistence.jdbc.user" value="postgres" /> <!-- DB User -->
       <property name="javax.persistence.jdbc.password" value="postgres" /> <!-- DB Password -->
       <!-- configure behavior -->
-      <property name="hibernate.hbm2ddl.auto" value="update" /> <!-- create / create-drop / update -->
+      <property name="hibernate.hbm2ddl.auto" value="create" /> <!-- create / create-drop / update -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
       <property name="hibernate.show_sql" value="true" /> <!-- Show SQL in console -->
       <property name="hibernate.format_sql" value="true" /> <!-- Show SQL formatted -->
