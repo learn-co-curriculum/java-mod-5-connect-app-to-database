@@ -32,7 +32,7 @@ database. These configurations are added to the `persistence.xml` file.
 2. Create a file named `persistence.xml` in the `META-INF` folder.
 3. Your project directory structure should look like the following:  
 
-![project structure persistence.xml](https://curriculum-content.s3.amazonaws.com/6036/jpa-connect-app-database/persistence_xml.png)  
+![project structure persistence.xml](https://curriculum-content.s3.amazonaws.com/6036/connect-app-database/persistence_xml.png)  
 
 4. Add the following to `persistence.xml`.
 
@@ -79,7 +79,7 @@ Let’s look at what these properties do:
 
 We will create a `Student` class and use it to create an associated table in the
 PostgreSQL database. This will be a basic entity for now but later we will learn how to
-customize the properties.
+customize the properties. 
 
 ### Create the Class
 
@@ -87,7 +87,7 @@ customize the properties.
 2. Create a `Student` class in the `org.example.model directory.
 3. Your project directory structure should look like this:
 
-![model package](https://curriculum-content.s3.amazonaws.com/6036/jpa-connect-app-database/model_package_structure.png)
+![model package](https://curriculum-content.s3.amazonaws.com/6036/connect-app-database/model_student.png)
 
 ### Define the Class
 
@@ -160,7 +160,7 @@ We configured a persistence context in the `persistence.xml` file earlier. Now,
 we have to use that context in our app to interact with the database. We
 use an `EntityManager` to allow the entity to communicate with the database.
 
-Edit the `JpaWriteStudent` class and add the following code:
+Edit the `JpaCreateStudent` class and add the following code:
 
 ```java
 package org.example;
@@ -171,7 +171,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class JpaWriteStudent {
+public class JpaCreateStudent {
     public static void main(String[] args) {
         // create a new student instance
         Student student1 = new Student();
@@ -211,9 +211,9 @@ public class JpaWriteStudent {
 This is boilerplate code required when working with JPA, but this code is not needed when
 using frameworks that provide auto configurations such as Spring (with SpringBoot).
 
-### Run `JpaWriteStudent.main`
+### Run `JpaCreateStudent.main`
 
-1. Run the `JpaWriteStudent.main` method. This will create a `STUDENT_DATA`
+1. Run the `JpaCreateStudent.main` method. This will create a `STUDENT_DATA`
    table in the PostgreSQL `student_db` database and add a new row. 
 2. In IntelliJ, check out the “Run” tab to see the exact query that Hibernate used
    to create the table and insert the data. It shows the SQL queries because we enabled this behavior in
