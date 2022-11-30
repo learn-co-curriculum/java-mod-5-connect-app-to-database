@@ -6,7 +6,6 @@
 - Define a JPA entity using `@Entity`, `@Table`, and `@Id` annotations.
 - Use `EntityManagerFactory` and `EntityManager` to manage an entity.
 - Use the `persist` method of `EntityManager` to write an entity to the database.
-- Use the `find` method of `EntityManager` to retrieve an entity from the database.
 
 ## CODE ALONG
 
@@ -32,7 +31,7 @@ database. These configurations are added to the `persistence.xml` file.
 2. Create a file named `persistence.xml` in the `META-INF` folder.
 3. Your project directory structure should look like the following:  
 
-![project structure persistence.xml](https://curriculum-content.s3.amazonaws.com/6036/connect-app-database/persistence_xml.png)  
+![project structure persistence.xml](https://curriculum-content.s3.amazonaws.com/6036/java-mod-5-jpa/persistence_xml.png)  
 
 4. Add the following to `persistence.xml`.
 
@@ -87,7 +86,7 @@ customize the properties.
 2. Create a `Student` class in the `org.example.model directory.
 3. Your project directory structure should look like this:
 
-![model package](https://curriculum-content.s3.amazonaws.com/6036/connect-app-database/model_student.png)
+![model package](https://curriculum-content.s3.amazonaws.com/6036/java-mod-5-jpa/model_package.png)  
 
 ### Define the Class
 
@@ -241,72 +240,10 @@ Hibernate:
 
 ![pgadmin student_data query](https://curriculum-content.s3.amazonaws.com/6036/jpa-connect-app-database/query_student_data.png)
 
-## Read a `Student` entity from the database
-
-Edit the `JpaReadStudent` class and add the following code:
-
-```java
-package org.example;
-
-import org.example.model.Student;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-public class JpaReadStudent {
-    public static void main(String[] args) {
-        // create EntityManager
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("example");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-        // get student data using primary key id=1
-        Student student1 = entityManager.find(Student.class, 1);
-        System.out.println(student1);
-
-        //close entity manager and factory
-        entityManager.close();
-        entityManagerFactory.close();
-    }
-}
-
-
-```
-
-1. Use `EntityManagerFactory` to create a single instance of `EntityManager`.  
-2. The `find` method returns a `Student` object based on the method parameters:   
-   - `Student.class` indicates the entity class, which provides information about the database table and primary key.
-   - `1` indicates the primary key value.
-
-The `find` method returns null if the entity is not in the database.
-
-### Run `JpaReadStudent.main`
-
-1. Run the `JpaReadStudent.main` method. This will query the database for the student entity with `id=1`.
-2. In IntelliJ, check out the “Run” tab to see the exact query that Hibernate used
-   to find the entity. 
-
-```text
-Hibernate: 
-    select
-        student0_.id as id1_0_0_,
-        student0_.name as name2_0_0_ 
-    from
-        STUDENT_DATA student0_ 
-    where
-        student0_.id=?
-
-```
-
-3. The `JpaReadStudent.main` implicitly calls the `toString()` method to print the `Student` object state: 
-
-```text
-Student{id=1, name='Jack'}
-```
-
 ## Conclusion
 
 We have learned how to configure a persistence context, create an entity and persist it to the database.
-We subsequently queried the database to retrieve the entity. Notice we did this without writing
+Notice we did this without writing
 any SQL!  In the following lessons, we will learn more about
 entity mapping, object methods, and how to create relationships between models.
 
