@@ -31,7 +31,7 @@ database. These configurations are added to the `persistence.xml` file.
 2. Create a file named `persistence.xml` in the `META-INF` folder.
 3. Your project directory structure should look like the following:  
 
-![persistence.xml](https://curriculum-content.s3.amazonaws.com/6036/java-mod-5-jpa/persistence_xml_project.png)  
+![persistence.xml](https://curriculum-content.s3.amazonaws.com/6036/java-mod-5-jpa/persistence_xml.png)  
 
 4. Add the following to `persistence.xml`.
 
